@@ -3,15 +3,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
-import HomeScreen from '../screens/HomeScreen';
-import PokedexScreen from '../screens/PokedexScreen';
-import GenerationsScreen from '../screens/GenerationsScreen';
-import PokemonDetailScreen from '../screens/PokemonDetailScreen';
-import { COLORS } from '../constants/colors';
+import HomeScreen from './screens/HomeScreen';
+import PokedexScreen from './screens/PokedexScreen';
+import GenerationsScreen from './screens/GenerationsScreen';
+import PokemonDetailScreen from './screens/PokemonDetailScreen';
+import { COLORS } from './constants/colors';
 
 const Stack = createNativeStackNavigator();
 
-export default function RootLayout() {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
