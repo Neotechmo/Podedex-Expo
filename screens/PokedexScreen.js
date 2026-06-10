@@ -19,13 +19,14 @@ import { GENERATIONS } from "../constants/generations";
 import { getPokemonIdFromUrl } from "../utils/pokemonUtils";
 
 const POKEMON_PER_PAGE = 20;
+let savedSearchText = "";
 
 export default function PokedexScreen({ navigation, route }) {
   const initialGeneration = route?.params?.generation || GENERATIONS[0];
 
   const [allPokemonList, setAllPokemonList] = useState([]);
   const [displayedList, setDisplayedList] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(savedSearchText);
   const [loading, setLoading] = useState(true);
   const [pageLoading, setPageLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -113,7 +114,6 @@ export default function PokedexScreen({ navigation, route }) {
     setError(null);
     setAllPokemonList([]);
     setDisplayedList([]);
-    setSearchText("");
     setCurrentPage(0);
 
     try {
@@ -136,6 +136,7 @@ export default function PokedexScreen({ navigation, route }) {
   };
 
   const handleSearch = (text) => {
+    savedSearchText = text;
     setSearchText(text);
     setCurrentPage(0);
   };

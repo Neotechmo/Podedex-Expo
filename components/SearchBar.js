@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { COLORS } from "../constants/colors";
 
 export default function SearchBar({
@@ -22,9 +22,19 @@ export default function SearchBar({
           autoCorrect={false}
           returnKeyType="search"
         />
-        <View style={styles.icon}>
-          <Text style={styles.iconText}>🔍</Text>
-        </View>
+        {value ? (
+          <TouchableOpacity
+            style={styles.icon}
+            onPress={() => onChangeText("")}
+            activeOpacity={0.7}
+          >
+            <Text style={styles.clearText}>×</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.icon}>
+            <Text style={styles.iconText}>🔍</Text>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -70,5 +80,11 @@ const styles = StyleSheet.create({
   },
   iconText: {
     fontSize: 18,
+  },
+  clearText: {
+    color: COLORS.muted,
+    fontSize: 24,
+    fontWeight: "700",
+    lineHeight: 26,
   },
 });
